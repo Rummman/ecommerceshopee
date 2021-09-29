@@ -1,10 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-
+import ProductList from './ProductList'
+import Categories from '../components/Categories'
 const Home = () => {
     return (
         <div>
-            <Navbar/>
+            <Categories/>
+            <ProductList/>
         </div>
     )
 }

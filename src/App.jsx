@@ -1,51 +1,33 @@
+import React from "react";
 import Navbar from "./components/Navbar";
-import ProductCard from "./components/ProductCard";
+import GlobalStyle from "./globalStyles";
+import Product from "./Pages/Product";
+import ProductList from "./Pages/ProductList";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Home from "./Pages/Home";
+import Footer from "./components/Footer";
+import Cart from './Pages/Cart';
 
 const App = () => {
   return (
-  <div>
-    <Navbar/>
-    <ProductCard 
-      img = "/images/riva.jpg"
-      title = "Riva Full Face Helmet"
-    />
-    
-    <ProductCard 
-      img = "/images/gloss black.jpg"
-      title = "MT Gloss Black Helmet"
-    />
+    <BrowserRouter>
+      <GlobalStyle />
+      <Navbar />
+      
+      <Switch>
+        <Route path="/" exact component={Home} strict={true} />
 
-    <ProductCard 
-      img = "/images/shoe.jpg"
-      title = "Shoe Full Face Helmet"
-    />
+        <Route path="/list" component={ProductList} />
+        
+        <Route path="/cart" component={Cart} />
 
-    <ProductCard 
-      img = "/images/vega.jpg"
-      title = "Vega Full Face Helmet"
-    />
+        <Route path="/details/:id" component={Product} />
 
-    <ProductCard 
-      img = "/images/open face.jpg"
-      title = "Half Face Helmet"
-    />
-
-    <ProductCard 
-      img = "/images/dirt.jpg"
-      title = "Off Road Helmet"
-    />
-
-    <ProductCard 
-      img = "/images/dirt2.jpg"
-      title = "Cross Helmet"
-    />
-
-    <ProductCard 
-      img = "/images/steelbird.jpg"
-      title = "Steelbird Full Face Helmet"
-    />
-
-  </div>)
+        <Redirect to="/" />
+      </Switch>
+      <Footer />
+    </BrowserRouter>
+  );
 };
 
 export default App;
